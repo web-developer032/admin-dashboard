@@ -59,7 +59,7 @@ export default {
         meta: {
           1: "#DC3545",
           2: "#EFF2F7",
-          3: "#10B981",
+          3: COLORS.TERTIARY,
           4: "#313D4A",
           5: "#259AE6",
           6: "#FFBA00",
@@ -226,10 +226,10 @@ export default {
         65: ".65",
       },
       backgroundImage: {
-        video: "url('../images/video/video.png')",
+        video: "url('../assets/images/video/video.png')",
       },
       content: {
-        "icon-copy": 'url("../images/icon/icon-copy-alt.svg")',
+        "icon-copy": 'url("../assets/images/icon/icon-copy-alt.svg")',
       },
       transitionProperty: { width: "width", stroke: "stroke" },
       borderWidth: {
