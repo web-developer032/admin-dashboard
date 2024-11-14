@@ -1,6 +1,12 @@
 import defaultTheme from "tailwindcss/defaultTheme";
 import colors from "tailwindcss/colors";
 
+export const COLORS = {
+  PRIMARY: "#e72479",
+  SECONDARY: "#8e2f89",
+  TERTIARY: "#0058a5",
+};
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -33,8 +39,8 @@ export default {
         bodydark: "#AEB7C0",
         bodydark1: "#DEE4EE",
         bodydark2: "#8A99AF",
-        primary: "#3C50E0",
-        secondary: "#80CAEE",
+        primary: COLORS.PRIMARY,
+        secondary: COLORS.SECONDARY,
         stroke: "#E2E8F0",
         gray: {
           ...colors.gray,

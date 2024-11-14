@@ -1,12 +1,13 @@
 import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
+import { COLORS } from "../../../tailwind.config";
 
 const options = {
   chart: {
     fontFamily: "Satoshi, sans-serif",
     type: "donut",
   },
-  colors: ["#3C50E0", "#6577F3", "#8FD0EF", "#0FADCF"],
+  colors: [COLORS.PRIMARY, COLORS.SECONDARY, "#8FD0EF", COLORS.TERTIARY],
   labels: ["Desktop", "Tablet", "Mobile", "Unknown"],
   legend: {
     show: false,
