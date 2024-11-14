@@ -14,7 +14,7 @@ const useLocalStorage = (key, initialValue) => {
   });
 
   useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(value));
+    localStorage.setItem(key, JSON.stringify(value).trim());
   }, [key, value]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return [value, setValue];

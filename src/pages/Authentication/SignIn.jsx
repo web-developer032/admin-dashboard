@@ -9,7 +9,11 @@ const SignIn = () => (
         <div className="hidden w-full xl:block xl:w-1/2">
           <div className="py-17.5 px-26 tesxt-center">
             <Link className="mb-5.5 block " to="/">
-              <img className="hidden dark:block" src={Logo} alt="Logo" />
+              <img
+                className="hidden dark:block mx-auto"
+                src={Logo}
+                alt="Logo"
+              />
               <img className="dark:hidden mx-auto" src={Logo} alt="Logo" />
             </Link>
 

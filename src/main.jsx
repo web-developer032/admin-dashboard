@@ -10,6 +10,9 @@ import "./css/style.css";
 import "./css/satoshi.css";
 import "jsvectormap/dist/css/jsvectormap.css";
 import "flatpickr/dist/flatpickr.min.css";
+import { getUserDefinedTheme, setDefaultColorTheme } from "./lib/utils.js";
+
+setDefaultColorTheme(getUserDefinedTheme());
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
