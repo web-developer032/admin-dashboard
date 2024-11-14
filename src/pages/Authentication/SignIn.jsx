@@ -1,22 +1,19 @@
 import { Link } from "react-router-dom";
-import Breadcrumb from "../../components/Breadcrumbs/Breadcrumb";
-import LogoDark from "../../assets/images/logo/logo-dark.svg";
+// import LogoDark from "../../assets/images/logo/logo-dark.svg";
 import Logo from "../../assets/images/logo/logo.svg";
 
 const SignIn = () => (
   <>
-    <Breadcrumb pageName="Sign In" />
-
     <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
       <div className="flex flex-wrap items-center">
         <div className="hidden w-full xl:block xl:w-1/2">
           <div className="py-17.5 px-26 tesxt-center">
-            <Link className="mb-5.5 inline-block" to="/">
+            <Link className="mb-5.5 block " to="/">
               <img className="hidden dark:block" src={Logo} alt="Logo" />
-              <img className="dark:hidden" src={LogoDark} alt="Logo" />
+              <img className="dark:hidden mx-auto" src={Logo} alt="Logo" />
             </Link>
 
-            <p className="2xl:px-20">
+            <p className="2xl:px-20 text-center">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit
               suspendisse.
             </p>

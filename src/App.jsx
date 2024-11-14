@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 import Loader from "./common/Loader";
-import PageTitle from "./components/PageTitle";
+import PageTitle from "./hoc/PageTitle";
 import SignIn from "./pages/Authentication/SignIn";
 import SignUp from "./pages/Authentication/SignUp";
 import Calendar from "./pages/Calendar";
@@ -15,7 +15,7 @@ import Settings from "./pages/Settings";
 import Tables from "./pages/Tables";
 import Alerts from "./pages/UiElements/Alerts";
 import Buttons from "./pages/UiElements/Buttons";
-import DefaultLayout from "./layout/DefaultLayout";
+import ProtectedRoute from "./hoc/ProtectedRoute";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -34,118 +34,97 @@ function App() {
   }
 
   return (
-    <DefaultLayout>
+    <>
       <Routes>
-        <Route
-          index={true}
-          element={
-            <>
-              <PageTitle title="eCommerce Dashboard | Ejuno - Admin Dashboard" />
-              <ECommerce />
-            </>
-          }
-        />
-        <Route
-          path="/calendar"
-          element={
-            <>
-              <PageTitle title="Calendar | Ejuno - Admin Dashboard" />
-              <Calendar />
-            </>
-          }
-        />
-        <Route
-          path="/profile"
-          element={
-            <>
-              <PageTitle title="Profile | Ejuno - Admin Dashboard" />
-              <Profile />
-            </>
-          }
-        />
-        <Route
-          path="/forms/form-elements"
-          element={
-            <>
-              <PageTitle title="Form Elements | Ejuno - Admin Dashboard" />
-              <FormElements />
-            </>
-          }
-        />
-        <Route
-          path="/forms/form-layout"
-          element={
-            <>
-              <PageTitle title="Form Layout | Ejuno - Admin Dashboard" />
-              <FormLayout />
-            </>
-          }
-        />
-        <Route
-          path="/tables"
-          element={
-            <>
-              <PageTitle title="Tables | Ejuno - Admin Dashboard" />
-              <Tables />
-            </>
-          }
-        />
-        <Route
-          path="/settings"
-          element={
-            <>
-              <PageTitle title="Settings | Ejuno - Admin Dashboard" />
-              <Settings />
-            </>
-          }
-        />
-        <Route
-          path="/chart"
-          element={
-            <>
-              <PageTitle title="Basic Chart | Ejuno - Admin Dashboard" />
-              <Chart />
-            </>
-          }
-        />
-        <Route
-          path="/ui/alerts"
-          element={
-            <>
-              <PageTitle title="Alerts | Ejuno - Admin Dashboard" />
-              <Alerts />
-            </>
-          }
-        />
-        <Route
-          path="/ui/buttons"
-          element={
-            <>
-              <PageTitle title="Buttons | Ejuno - Admin Dashboard" />
-              <Buttons />
-            </>
-          }
-        />
-        <Route
-          path="/auth/signin"
-          element={
-            <>
-              <PageTitle title="Signin | Ejuno - Admin Dashboard" />
-              <SignIn />
-            </>
-          }
-        />
-        <Route
-          path="/auth/signup"
-          element={
-            <>
-              <PageTitle title="Signup | Ejuno - Admin Dashboard" />
-              <SignUp />
-            </>
-          }
-        />
+        <Route element={<ProtectedRoute isAuthRoute={false} />}>
+          <Route
+            index={true}
+            element={
+              <PageTitle title="eCommerce Dashboard | Ejuno - Admin Dashboard">
+                <ECommerce />
+              </PageTitle>
+            }
+          />
+          <Route
+            path="/calendar"
+            element={
+              <PageTitle title="Calendar | Ejuno - Admin Dashboard">
+                <Calendar />
+              </PageTitle>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <PageTitle title="Profile | Ejuno - Admin Dashboard">
+                <Profile />
+              </PageTitle>
+            }
+          />
+          <Route
+            path="/forms/form-elements"
+            element={
+              <PageTitle title="Form Elements | Ejuno - Admin Dashboard">
+                <FormElements />
+              </PageTitle>
+            }
+          />
+          <Route
+            path="/forms/form-layout"
+            element={
+              <PageTitle title="Form Layout | Ejuno - Admin Dashboard">
+                <FormLayout />
+              </PageTitle>
+            }
+          />
+          <Route
+            path="/tables"
+            element={
+              <PageTitle title="Tables | Ejuno - Admin Dashboard">
+                <Tables />
+              </PageTitle>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <PageTitle title="Settings | Ejuno - Admin Dashboard">
+                <Settings />
+              </PageTitle>
+            }
+          />
+          <Route
+            path="/chart"
+            element={
+              <PageTitle title="Basic Chart | Ejuno - Admin Dashboard">
+                <Chart />
+              </PageTitle>
+            }
+          />
+          <Route
+            path="/ui/alerts"
+            element={
+              <PageTitle title="Alerts | Ejuno - Admin Dashboard">
+                <Alerts />
+              </PageTitle>
+            }
+          />
+          <Route
+            path="/ui/buttons"
+            element={
+              <PageTitle title="Buttons | Ejuno - Admin Dashboard">
+                <Buttons />
+              </PageTitle>
+            }
+          />
+        </Route>
+
+        <Route element={<ProtectedRoute isAuthRoute={true} />}>
+          <Route path="/auth/signin" element={<SignIn />} />
+          <Route path="/auth/signup" element={<SignUp />} />
+        </Route>
       </Routes>
-    </DefaultLayout>
+    </>
   );
 }
 
