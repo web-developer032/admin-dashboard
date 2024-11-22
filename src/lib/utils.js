@@ -21,3 +21,21 @@ export function getUserDefinedTheme() {
 
   return defaultTheme;
 }
+
+export const routes = {
+  home: "/",
+  couples: "/couples",
+  chart: "/chart",
+  vendors: "/vendors",
+  calendar: "/calendar",
+  profile: "/profile",
+  formElements: "/forms/form-elements",
+  formLayout: "/forms/form-layout",
+  settings: "/settings",
+  tables: "/tables",
+  uiAlerts: "/ui/alerts",
+  uiButtons: "/ui/buttons",
+
+  authSignin: "/auth/signin",
+  authSignup: "/auth/signup",
+};

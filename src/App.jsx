@@ -19,6 +19,7 @@ import ProtectedRoute from "./hoc/ProtectedRoute";
 import Couple from "./pages/Dashboard/Couple";
 import Vendor from "./pages/Dashboard/Vendor";
 import useReduxState from "./hooks/useReduxState";
+import { routes } from "./lib/utils";
 
 function App() {
   const auth = useReduxState("auth");
@@ -50,7 +51,7 @@ function App() {
           }
         />
         <Route
-          path="/couples"
+          path={routes.couples}
           element={
             <PageTitle title="Couple | Ejuno - Admin Dashboard">
               <Couple />
@@ -58,7 +59,7 @@ function App() {
           }
         />
         <Route
-          path="/vendors"
+          path={routes.vendors}
           element={
             <PageTitle title="Vendor | Ejuno - Admin Dashboard">
               <Vendor />
@@ -66,7 +67,7 @@ function App() {
           }
         />
         <Route
-          path="/calendar"
+          path={routes.calendar}
           element={
             <PageTitle title="Calendar | Ejuno - Admin Dashboard">
               <Calendar />
@@ -74,7 +75,7 @@ function App() {
           }
         />
         <Route
-          path="/profile"
+          path={routes.profile}
           element={
             <PageTitle title="Profile | Ejuno - Admin Dashboard">
               <Profile />
@@ -82,7 +83,7 @@ function App() {
           }
         />
         <Route
-          path="/forms/form-elements"
+          path={routes.formElements}
           element={
             <PageTitle title="Form Elements | Ejuno - Admin Dashboard">
               <FormElements />
@@ -90,7 +91,7 @@ function App() {
           }
         />
         <Route
-          path="/forms/form-layout"
+          path={routes.formLayout}
           element={
             <PageTitle title="Form Layout | Ejuno - Admin Dashboard">
               <FormLayout />
@@ -98,7 +99,7 @@ function App() {
           }
         />
         <Route
-          path="/tables"
+          path={routes.tables}
           element={
             <PageTitle title="Tables | Ejuno - Admin Dashboard">
               <Tables />
@@ -106,7 +107,7 @@ function App() {
           }
         />
         <Route
-          path="/settings"
+          path={routes.settings}
           element={
             <PageTitle title="Settings | Ejuno - Admin Dashboard">
               <Settings />
@@ -114,7 +115,7 @@ function App() {
           }
         />
         <Route
-          path="/chart"
+          path={routes.chart}
           element={
             <PageTitle title="Basic Chart | Ejuno - Admin Dashboard">
               <Chart />
@@ -122,7 +123,7 @@ function App() {
           }
         />
         <Route
-          path="/ui/alerts"
+          path={routes.uiAlerts}
           element={
             <PageTitle title="Alerts | Ejuno - Admin Dashboard">
               <Alerts />
@@ -130,7 +131,7 @@ function App() {
           }
         />
         <Route
-          path="/ui/buttons"
+          path={routes.uiAlerts}
           element={
             <PageTitle title="Buttons | Ejuno - Admin Dashboard">
               <Buttons />
@@ -140,8 +141,8 @@ function App() {
       </Route>
 
       <Route element={<ProtectedRoute isAuthRoute={true} />}>
-        <Route path="/auth/signin" element={<SignIn />} />
-        <Route path="/auth/signup" element={<SignUp />} />
+        <Route path={routes.authSignin} element={<SignIn />} />
+        <Route path={routes.authSignup} element={<SignUp />} />
       </Route>
     </Routes>
   );
