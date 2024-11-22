@@ -1,20 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import counterReducer, { counterSlice } from "./slices/counter/counter";
-import baseApi from "./services/api";
+import service from "./apiService";
+import authReducer, { authSlice } from "./auth/authSlice";
 
 const reduxStore = configureStore({
   reducer: {
-    [counterSlice.name]: counterReducer,
+    [authSlice.name]: authReducer,
 
     // ----------------
     // SERVICES
     // ----------------
-    [baseApi.reducerPath]: baseApi.reducer,
+    [service.reducerPath]: service.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(baseApi.middleware),
+    getDefaultMiddleware().concat(service.middleware),
 });
 
 setupListeners(reduxStore.dispatch);

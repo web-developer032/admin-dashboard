@@ -19,12 +19,12 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
-// Define a service using a base URL and expected endpoints
-const baseApi = createApi({
+// Define a apiService using a base URL and expected endpoints
+const apiService = createApi({
   reducerPath: "api",
   baseQuery,
   tagTypes: ["Pokemon"],
   endpoints: () => ({}),
 });
 
-export default baseApi;
+export default apiService;
