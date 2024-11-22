@@ -68,6 +68,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
     }
   }, [sidebarExpanded]);
 
+  const handleMenuClick = (e, handleClick) => {
+    e.preventDefault();
+    sidebarExpanded ? handleClick() : setSidebarExpanded(true);
+  };
+
   return (
     <aside
       ref={sidebar}
@@ -131,12 +136,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         (pathname === "/" || pathname.includes("dashboard")) &&
                         "bg-graydark dark:bg-meta-4"
                       }`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        sidebarExpanded
-                          ? handleClick()
-                          : setSidebarExpanded(true);
-                      }}
+                      onClick={(e) => handleMenuClick(e, handleClick)}
                     >
                       <DashboardIcon />
                       Dashboard
@@ -154,12 +154,41 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           <NavLink
                             to="/"
                             className={({ isActive }) =>
-                              `group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
-                                isActive && "!text-white"
-                              }`
+                              cn(
+                                "group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white",
+                                isActive && "text-white",
+                              )
                             }
                           >
-                            eCommerce
+                            Home
+                          </NavLink>
+                        </li>
+
+                        <li>
+                          <NavLink
+                            to="/couples"
+                            className={({ isActive }) =>
+                              cn(
+                                "group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white",
+                                isActive && "text-white",
+                              )
+                            }
+                          >
+                            Couples
+                          </NavLink>
+                        </li>
+
+                        <li>
+                          <NavLink
+                            to="/vendors"
+                            className={({ isActive }) =>
+                              cn(
+                                "group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white",
+                                isActive && "text-white",
+                              )
+                            }
+                          >
+                            Vendors
                           </NavLink>
                         </li>
                       </ul>
@@ -213,12 +242,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         (pathname === "/forms" || pathname.includes("forms")) &&
                         "bg-graydark dark:bg-meta-4"
                       }`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        sidebarExpanded
-                          ? handleClick()
-                          : setSidebarExpanded(true);
-                      }}
+                      onClick={(e) => handleMenuClick(e, handleClick)}
                     >
                       <FormIcon />
                       Forms
@@ -327,12 +351,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         (pathname === "/ui" || pathname.includes("ui")) &&
                         "bg-graydark dark:bg-meta-4"
                       }`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        sidebarExpanded
-                          ? handleClick()
-                          : setSidebarExpanded(true);
-                      }}
+                      onClick={(e) => handleMenuClick(e, handleClick)}
                     >
                       <UIElementsIcon />
                       UI Elements
@@ -391,12 +410,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         (pathname === "/auth" || pathname.includes("auth")) &&
                         "bg-graydark dark:bg-meta-4"
                       }`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        sidebarExpanded
-                          ? handleClick()
-                          : setSidebarExpanded(true);
-                      }}
+                      onClick={(e) => handleMenuClick(e, handleClick)}
                     >
                       <AuthenticationIcon />
                       Authentication
