@@ -16,6 +16,8 @@ import Tables from "./pages/Tables";
 import Alerts from "./pages/UiElements/Alerts";
 import Buttons from "./pages/UiElements/Buttons";
 import ProtectedRoute from "./hoc/ProtectedRoute";
+import Couple from "./pages/Dashboard/Couple";
+import Vendor from "./pages/Dashboard/Vendor";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -40,8 +42,24 @@ function App() {
           <Route
             index={true}
             element={
-              <PageTitle title="eCommerce Dashboard | Ejuno - Admin Dashboard">
+              <PageTitle title="eCommerce | Ejuno - Admin Dashboard">
                 <ECommerce />
+              </PageTitle>
+            }
+          />
+          <Route
+            path="/couples"
+            element={
+              <PageTitle title="Couple | Ejuno - Admin Dashboard">
+                <Couple />
+              </PageTitle>
+            }
+          />
+          <Route
+            path="/vendors"
+            element={
+              <PageTitle title="Vendor | Ejuno - Admin Dashboard">
+                <Vendor />
               </PageTitle>
             }
           />

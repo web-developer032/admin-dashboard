@@ -25,14 +25,14 @@ const Button = ({
     outlined
       ? `border border-${variant} text-${variant}`
       : `text-white bg-${variant}`,
-    classes,
+    // classes,
   );
 
   if (href) {
     return (
-      <a href={href} className={btnStyle} target={target}>
+      <Link href={href} className={btnStyle} target={target}>
         {children}
-      </a>
+      </Link>
     );
   }
   return <button className={btnStyle}>{children}</button>;

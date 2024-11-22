@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 
 const ClickOutside = ({ children, exceptionRef, onClick, className }) => {
   const wrapperRef = useRef(null);
