@@ -6,7 +6,7 @@ const DefaultLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <section className="flex h-screen overflow-hidden">
+    <section className="flex min-h-screen overflow-hidden">
       {/* <!-- ===== Sidebar Start ===== --> */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
       {/* <!-- ===== Sidebar End ===== --> */}

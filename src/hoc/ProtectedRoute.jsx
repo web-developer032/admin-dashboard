@@ -1,11 +1,12 @@
 import { Navigate, Outlet } from "react-router-dom";
 import DefaultLayout from "../layout/DefaultLayout";
 import AuthLayout from "../layout/AuthLayout";
+import useReduxState from "../hooks/useReduxState";
 
 function ProtectedRoute({ isAuthRoute }) {
-  const isAuthenticated = true; // Replace this with actual authentication logic
+  const auth = useReduxState("auth");
 
-  if (!isAuthenticated && !isAuthRoute) {
+  if (!auth.user && !isAuthRoute) {
     return <Navigate to="/auth/signin" />;
   }
 

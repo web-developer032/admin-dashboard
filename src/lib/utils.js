@@ -13,8 +13,9 @@ export function setDefaultColorTheme(colorMode) {
 }
 
 export function getUserDefinedTheme() {
+  let colorTheme = localStorage.getItem("color-theme");
   const defaultTheme =
-    JSON.parse(localStorage.getItem("color-theme") || "") ||
+    (colorTheme && JSON.parse(colorTheme)) ||
     (window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "dark"
       : "light");

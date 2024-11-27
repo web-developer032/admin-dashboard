@@ -1,26 +1,35 @@
 import apiService from "../apiService";
+import { setUser } from "./authSlice";
 
 export const authApi = apiService.injectEndpoints({
   endpoints: (builder) => ({
-    loginCoupleByTokenAndId: builder.mutation({
-      query: (body) => ({ url: "/couples/login", method: "POST", body }),
-      transformResponse: (response) => response,
+    getAdminByToken: builder.query({
+      query: () => `/admins/loginByToken`,
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(setUser(data));
+        } catch (error) {
+          console.error("Error fetching admin data:", error);
+        }
+      },
     }),
-    // getting all of the registry products on registry
-    getCoupleByTokenAndId: builder.query({
-      query: (coupleId) => `/couples/${coupleId}`,
+
+    login: builder.mutation({
+      query: (body) => ({ url: "/admins/login", method: "POST", body }),
     }),
-    updateCoupleData: builder.mutation({
-      query: ({ body, coupleId }) => ({
-        url: `/couples/${coupleId}`,
+    updateAdmin: builder.mutation({
+      query: ({ body, adminId }) => ({
+        url: `/admins/${adminId}`,
         method: "PATCH",
         body,
       }),
     }),
   }),
 });
+
 export const {
-  useLoginCoupleByTokenAndIdMutation,
-  useUpdateCoupleDataMutation,
-  useGetCoupleByTokenAndIdQuery,
+  useGetAdminByTokenQuery,
+  useLoginMutation,
+  useUpdateAdminMutation,
 } = authApi;

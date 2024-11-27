@@ -23,7 +23,7 @@ const baseQuery = fetchBaseQuery({
 const apiService = createApi({
   reducerPath: "api",
   baseQuery,
-  tagTypes: ["Pokemon"],
+  tagTypes: [],
   endpoints: () => ({}),
 });
 

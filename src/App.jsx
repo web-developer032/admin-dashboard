@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 
 import Loader from "./common/Loader";
 import PageTitle from "./hoc/PageTitle";
@@ -18,24 +18,21 @@ import Buttons from "./pages/UiElements/Buttons";
 import ProtectedRoute from "./hoc/ProtectedRoute";
 import Couple from "./pages/Dashboard/Couple";
 import Vendor from "./pages/Dashboard/Vendor";
-import useReduxState from "./hooks/useReduxState";
+
 import { routes } from "./lib/utils";
 
-function App() {
-  const auth = useReduxState("auth");
+import { useGetAdminByTokenQuery } from "./redux/auth/authApi";
 
-  const [loading, setLoading] = useState(true);
+function App() {
+  const { isLoading } = useGetAdminByTokenQuery();
+
   const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 1000);
-  }, []);
-
-  if (loading) {
+  if (isLoading) {
     return <Loader />;
   }
 
@@ -144,6 +141,8 @@ function App() {
         <Route path={routes.authSignin} element={<SignIn />} />
         <Route path={routes.authSignup} element={<SignUp />} />
       </Route>
+
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 }
