@@ -10,14 +10,23 @@ export const authApi = apiService.injectEndpoints({
           const { data } = await queryFulfilled;
           dispatch(setUser(data));
         } catch (error) {
-          console.error("Error fetching admin data:", error);
+          // console.error("Error fetching admin data:", error);
         }
       },
     }),
 
-    login: builder.mutation({
+    loginAdmin: builder.mutation({
       query: (body) => ({ url: "/admins/login", method: "POST", body }),
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(setUser(data));
+        } catch (error) {
+          // console.error("Error fetching admin data:", error);
+        }
+      },
     }),
+
     updateAdmin: builder.mutation({
       query: ({ body, adminId }) => ({
         url: `/admins/${adminId}`,
@@ -30,6 +39,6 @@ export const authApi = apiService.injectEndpoints({
 
 export const {
   useGetAdminByTokenQuery,
-  useLoginMutation,
+  useLoginAdminMutation,
   useUpdateAdminMutation,
 } = authApi;

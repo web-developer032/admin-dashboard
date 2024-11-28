@@ -33,7 +33,7 @@ function App() {
   }, [pathname]);
 
   if (isLoading) {
-    return <Loader />;
+    return <Loader classes={"min-h-screen"} />;
   }
 
   return (
@@ -139,7 +139,7 @@ function App() {
 
       <Route element={<ProtectedRoute isAuthRoute={true} />}>
         <Route path={routes.authSignin} element={<SignIn />} />
-        <Route path={routes.authSignup} element={<SignUp />} />
+        {/* <Route path={routes.authSignup} element={<SignUp />} /> */}
       </Route>
 
       <Route path="*" element={<Navigate to="/" />} />

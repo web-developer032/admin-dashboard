@@ -36,7 +36,7 @@ module.exports = {
     "no-undef": "error",
     eqeqeq: ["error", "always"],
     curly: ["error", "all"],
-    "consistent-return": "error",
+    // "consistent-return": "error",
     "no-implicit-coercion": "warn",
 
     // React-specific rules

@@ -13,7 +13,7 @@ export function setDefaultColorTheme(colorMode) {
 }
 
 export function getUserDefinedTheme() {
-  let colorTheme = localStorage.getItem("color-theme");
+  const colorTheme = localStorage.getItem("color-theme");
   const defaultTheme =
     (colorTheme && JSON.parse(colorTheme)) ||
     (window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -40,3 +40,16 @@ export const routes = {
   authSignin: "/auth/signin",
   authSignup: "/auth/signup",
 };
+
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+export const isValidEmail = (email) => emailRegex.test(email);
+
+export function debounce(func, timeout = 300) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, timeout);
+  };
+}
