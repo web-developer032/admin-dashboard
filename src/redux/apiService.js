@@ -5,7 +5,7 @@ const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_EJUNO_BASE_URL_API,
   credentials: "include", // Include credentials (cookies) in all requests
   prepareHeaders: (headers) => {
-    const authToken = localStorage.getItem("authToken");
+    const authToken = localStorage.getItem("token");
     // headers.set(
     //   "X-Shopify-Access-Token",
     //   import.meta.env.VITE_SHOPIFY_STORE_ID,
@@ -15,6 +15,7 @@ const baseQuery = fetchBaseQuery({
     } else {
       headers.delete("Authorization");
     }
+
     return headers;
   },
 });

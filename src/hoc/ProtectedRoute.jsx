@@ -10,6 +10,10 @@ function ProtectedRoute({ isAuthRoute }) {
     return <Navigate to="/auth/signin" />;
   }
 
+  if (auth.user && isAuthRoute) {
+    return <Navigate to="/" />;
+  }
+
   const Layout = isAuthRoute ? AuthLayout : DefaultLayout;
 
   return (

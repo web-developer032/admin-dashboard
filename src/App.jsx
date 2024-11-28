@@ -22,8 +22,12 @@ import Vendor from "./pages/Dashboard/Vendor";
 import { routes } from "./lib/utils";
 
 import { useGetAdminByTokenQuery } from "./redux/auth/authApi";
+import useReduxState from "./hooks/useReduxState";
 
 function App() {
+  const auth = useReduxState("auth");
+  console.log("AUTH: ", auth);
+
   const { isLoading } = useGetAdminByTokenQuery();
 
   const { pathname } = useLocation();

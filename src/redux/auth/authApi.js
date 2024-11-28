@@ -8,7 +8,8 @@ export const authApi = apiService.injectEndpoints({
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          dispatch(setUser(data));
+
+          dispatch(setUser(data.data));
         } catch (error) {
           // console.error("Error fetching admin data:", error);
         }
@@ -20,11 +21,23 @@ export const authApi = apiService.injectEndpoints({
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          dispatch(setUser(data));
+
+          const admin = data.data?.admin;
+          dispatch(setUser(admin));
+
+          const token = data.data?.token;
+          token && localStorage.setItem("token", token);
         } catch (error) {
           // console.error("Error fetching admin data:", error);
         }
       },
+    }),
+
+    logoutAdmin: builder.query({
+      query: () => ({
+        url: `/admins/logout`,
+        method: "GET",
+      }),
     }),
 
     updateAdmin: builder.mutation({
