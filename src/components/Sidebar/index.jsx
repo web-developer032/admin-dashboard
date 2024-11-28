@@ -3,7 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import SidebarLinkGroup from "./SidebarLinkGroup";
 import Logo from "../../assets/images/logo/logo.svg";
 import { cn, routes } from "../../lib/utils";
-import Chevron from "../../common/Chevron";
+import Chevron from "../../assets/Icons/ChevronIcon";
 import DashboardIcon from "../../assets/Icons/DashboardIcon";
 import CalendarIcon from "../../assets/Icons/CalendarIcon";
 import ProfileIcon from "../../assets/Icons/ProfileIcon";

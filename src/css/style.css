@@ -215,3 +215,14 @@ span.flatpickr-weekday,
 [x-cloak] {
   display: none !important;
 }
+
+::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+  background: transparent;
+}
+::-webkit-scrollbar-thumb:vertical,
+::-webkit-scrollbar-thumb:horizontal {
+  background: #e72479;
+  border-radius: 10px;
+}

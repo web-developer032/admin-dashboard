@@ -1,3 +1,6 @@
+import DeleteIcon from "../../assets/Icons/DeleteIcon";
+import DownloadIcon from "../../assets/Icons/DownloadIcon";
+import EyeIcon from "../../assets/Icons/EyeIcon";
 import ProductOne from "../../assets/images/product/product-01.png";
 import ProductTwo from "../../assets/images/product/product-02.png";
 import ProductThree from "../../assets/images/product/product-03.png";
@@ -39,7 +42,7 @@ const productData = [
 ];
 
 const TableTwo = () => (
-  <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+  <section className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
     <div className="py-6 px-4 md:px-6 xl:px-7.5">
       <h4 className="text-xl font-semibold text-black dark:text-white">
         Top Products
@@ -60,7 +63,7 @@ const TableTwo = () => (
         <p className="font-medium">Sold</p>
       </div>
       <div className="col-span-1 flex items-center">
-        <p className="font-medium">Profit</p>
+        <p className="font-medium">Action</p>
       </div>
     </div>
 
@@ -74,7 +77,9 @@ const TableTwo = () => (
             <div className="h-12.5 w-15 rounded-md">
               <img src={product.image} alt="Product" />
             </div>
-            <p className="text-sm text-black dark:text-white">{product.name}</p>
+            <p className="text-sm text-black dark:text-white w-40 truncate">
+              {product.name}
+            </p>
           </div>
         </div>
         <div className="col-span-2 hidden items-center sm:flex">
@@ -88,12 +93,23 @@ const TableTwo = () => (
         <div className="col-span-1 flex items-center">
           <p className="text-sm text-black dark:text-white">{product.sold}</p>
         </div>
-        <div className="col-span-1 flex items-center">
-          <p className="text-sm text-meta-3">${product.profit}</p>
+
+        <div className="flex items-center space-x-3.5">
+          <button className="hover:text-primary">
+            <EyeIcon />
+          </button>
+
+          <button className="hover:text-primary">
+            <DeleteIcon />
+          </button>
+
+          <button className="hover:text-primary">
+            <DownloadIcon />
+          </button>
         </div>
       </div>
     ))}
-  </div>
+  </section>
 );
 
 export default TableTwo;
