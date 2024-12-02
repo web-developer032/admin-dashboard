@@ -13,7 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm ci && npm run build
+      - run: npm ci
+      - run: |
+          echo "VITE_EJUNO_BASE_URL=${{ secrets.VITE_EJUNO_BASE_URL }}" >> .env
+          echo "VITE_EJUNO_BASE_URL_API=${{ secrets.VITE_EJUNO_BASE_URL_API }}" >> .env
+          echo "VITE_SHOPIFY_STORE_ID=${{ secrets.VITE_SHOPIFY_STORE_ID }}" >> .env
+          echo "VITE_GOOGLE_API_KEY=${{ secrets.VITE_GOOGLE_API_KEY }}" >> .env
+      - run: npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
