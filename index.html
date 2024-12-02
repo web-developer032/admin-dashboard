@@ -12,5 +12,25 @@
       class="min-h-screen dark:bg-boxdark-2 dark:text-bodydark"
     ></main>
     <script type="module" src="/src/main.jsx"></script>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyD2DMWZJp-h8gA9K8LiQ1dDfps4xV0B8eI",
+        authDomain: "ejuno-admin-dashboard.firebaseapp.com",
+        projectId: "ejuno-admin-dashboard",
+        storageBucket: "ejuno-admin-dashboard.firebasestorage.app",
+        messagingSenderId: "1002369821312",
+        appId: "1:1002369821312:web:5d3762b4a2df809f95d465",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+    </script>
   </body>
 </html>
