@@ -397,7 +397,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               {/* <!-- Menu Item Ui Elements --> */}
 
               {/* <!-- Menu Item Auth Pages --> */}
-              <SidebarLinkGroup
+              {/* <SidebarLinkGroup
                 activeCondition={
                   pathname === "/auth" || pathname.includes("auth")
                 }
@@ -417,7 +417,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                       <Chevron open={open} />
                     </NavLink>
 
-                    {/* <!-- Dropdown Menu Start --> */}
                     <div
                       className={`translate transform overflow-hidden ${
                         !open && "hidden"
@@ -452,10 +451,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         </li>
                       </ul>
                     </div>
-                    {/* <!-- Dropdown Menu End --> */}
                   </React.Fragment>
                 )}
-              </SidebarLinkGroup>
+              </SidebarLinkGroup> */}
               {/* <!-- Menu Item Auth Pages --> */}
             </ul>
           </div>

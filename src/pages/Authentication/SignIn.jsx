@@ -1,18 +1,21 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/images/logo/logo.svg";
 import Mobile from "../../assets/images/other/SignInMobile.svg";
 import EmailIcon from "../../assets/Icons/EmailIcon";
 import LockIcon from "../../assets/Icons/LockIcon";
-import GoogleIcon from "../../assets/Icons/GoogleIcon";
 import { useLoginAdminMutation } from "../../redux/auth/authApi";
 import createToast, { TOAST_TYPE } from "../../hooks/createToast";
-import { debounce, routes } from "../../lib/utils";
+import { routes } from "../../lib/utils";
+import Loader from "../../common/Loader";
+import { Button } from "../UiElements/Buttons";
 
 const SignIn = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [loginAdmin] = useLoginAdminMutation();
   const navigate = useNavigate();
 
-  const handleLogin = debounce(async (email, password) => {
+  const handleLogin = async (email, password) => {
     if (!email || !password) {
       return createToast(
         "SignIn Failed",
@@ -21,6 +24,7 @@ const SignIn = () => {
       );
     }
 
+    setIsLoading(true);
     const data = await loginAdmin({ email, password });
 
     if (data?.error) {
@@ -33,7 +37,9 @@ const SignIn = () => {
     if (data?.data) {
       return navigate(routes.home);
     }
-  });
+
+    setIsLoading(false);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent default form submission immediately
@@ -109,20 +115,11 @@ const SignIn = () => {
                 </div>
               </div>
 
-              <div className="mb-5">
-                <input
-                  type="submit"
-                  value="Sign In"
-                  className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"
-                />
+              <div className="mb-5 ">
+                <Button isLoading={isLoading} btnType="submit">
+                  Sign In
+                </Button>
               </div>
-
-              {/* <button className="w-full flex items-center justify-center gap-3.5 rounded-lg border border-stroke bg-gray p-4 hover:bg-opacity-50 dark:border-strokedark dark:bg-meta-4 dark:hover:bg-opacity-50">
-                <span>
-                  <GoogleIcon />
-                </span>
-                Sign in with Google
-              </button> */}
             </form>
           </div>
         </div>

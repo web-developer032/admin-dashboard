@@ -2,15 +2,17 @@ import { Link } from "react-router-dom";
 
 import Breadcrumb from "../../components/Breadcrumbs/Breadcrumb";
 import { cn } from "../../lib/utils";
+import Loader from "../../common/Loader";
 
 export const BUTTON_VARIANT = {
   PRIMARY: "primary",
   SECONDARY: "secondary",
   TERTIARY: "meta-3",
   BLACK: "black",
+  WHITE: "white",
 };
 
-const Button = ({
+export const Button = ({
   children,
   href,
   outlined,
@@ -18,15 +20,21 @@ const Button = ({
   variant = BUTTON_VARIANT.PRIMARY,
   classes,
   target = "_self",
+  isLoading = false,
+  btnType = "button",
 }) => {
   const btnStyle = cn(
-    "inline-flex items-center justify-center py-4 px-10 text-center font-medium hover:bg-opacity-90 lg:px-8 xl:px-10",
+    "inline-flex items-center justify-center  w-full text-center font-medium hover:bg-opacity-90 py-4 px-10 lg:px-8 xl:px-10",
     roundClass,
     outlined
       ? `border border-${variant} text-${variant}`
       : `text-white bg-${variant}`,
     // classes,
   );
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   if (href) {
     return (
@@ -35,7 +43,11 @@ const Button = ({
       </Link>
     );
   }
-  return <button className={btnStyle}>{children}</button>;
+  return (
+    <button className={btnStyle} type={btnType}>
+      {children}
+    </button>
+  );
 };
 
 const Buttons = () => (
@@ -81,23 +93,6 @@ const Buttons = () => (
         </div>
 
         <div className="mb-7.5 flex flex-wrap gap-3">
-          <Button variant={BUTTON_VARIANT.TERTIARY}>Button Normal</Button>
-          <Button variant={BUTTON_VARIANT.TERTIARY} roundClass={"rounded-md"}>
-            Button Rounded Medium
-          </Button>
-          <Button variant={BUTTON_VARIANT.TERTIARY} roundClass={"rounded-full"}>
-            Button Rounded Full
-          </Button>
-          <Button
-            variant={BUTTON_VARIANT.TERTIARY}
-            roundClass={"rounded-md"}
-            outlined={true}
-          >
-            Button Outlined Medium
-          </Button>
-        </div>
-
-        <div className="mb-7.5 flex flex-wrap gap-3">
           <Button variant={BUTTON_VARIANT.BLACK}>Button Normal</Button>
           <Button variant={BUTTON_VARIANT.BLACK} roundClass={"rounded-md"}>
             Button Rounded Medium
@@ -106,7 +101,7 @@ const Buttons = () => (
             Button Rounded Full
           </Button>
           <Button
-            variant={BUTTON_VARIANT.BLACK}
+            variant={BUTTON_VARIANT.WHITE}
             roundClass={"rounded-md"}
             outlined={true}
           >
